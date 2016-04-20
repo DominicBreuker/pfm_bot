@@ -1,9 +1,16 @@
+var restify = require('restify');
 var builder = require('botbuilder');
+
+// Get secrets from server environment
+var botConnectorOptions = {
+    appId: process.env.BOTFRAMEWORK_APPID,
+    appSecret: process.env.BOTFRAMEWORK_APPSECRET
+};
 
 // Create LUIS Dialog that points at our model and add it as the root '/' dialog for our Cortana Bot.
 var model = 'https://api.projectoxford.ai/luis/v1/application?id=c413b2ef-382c-45bd-8ff0-f76d60e2a821&subscription-key=7b6755bab3a145b39ed171e4fa7b29a1&q=';
 var dialog = new builder.LuisDialog(model);
-var cortanaBot = new builder.TextBot();
+var cortanaBot = new builder.BotConnectorBot(botConnectorOptions);
 cortanaBot.add('/', dialog);
 
 // Add intent handlers
@@ -101,7 +108,9 @@ cortanaBot.add('/notify', function (session, alarm) {
     session.endDialog("Here's your '%s' alarm.", alarm.title);
 });
 
-cortanaBot.listenStdin();
+server.listen(process.env.port || 3978, function () {
+    console.log('%s listening to %s', server.name, server.url);
+});
 
 // Very simple alarm scheduler
 var alarms = {};
