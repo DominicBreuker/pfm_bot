@@ -1,26 +1,18 @@
 {
-  "name": "echobot",
-  "version": "1.0.0",
-  "description": "A sample bot for getting started with Bot Framework",
-  "main": "server.js",
+  "name": "pfm_bot",
+  "version": "0.0.1",
+  "description": "My little test bot",
+  "main": "index.js",
   "scripts": {
-    "test": ""
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/fuselabs/echobot.git"
-  },
-  "keywords": [
-    "botframework"
-  ],
-  "author": "Fuse Labs",
-  "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/fuselabs/echobot/issues"
-  },
-  "homepage": "https://github.com/fuselabs/echobot#readme",
+  "author": "Dominic Breuker",
+  "license": "ISC",
   "dependencies": {
-    "botbuilder": "^0.6.5",
+    "botbuilder": "^0.9.1",
     "restify": "^4.0.4"
+  },
+  "engines": {
+    "node": "5.4.0"
   }
 }
