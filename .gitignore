@@ -1,6 +1,7 @@
 node_modules
 
 BFEmulator
+testsite
 
 # Elastic Beanstalk Files
 .elasticbeanstalk/*
