@@ -108,9 +108,31 @@ cortanaBot.add('/notify', function (session, alarm) {
     session.endDialog("Here's your '%s' alarm.", alarm.title);
 });
 
+
+
+
+
+
+// Setup Restify Server
+var server = restify.createServer();
+
+// Handle Bot Framework messages
+server.post('/api/messages', cortanaBot.verifyBotFramework(), cortanaBot.listen());
+
+// Serve a static web page
+server.get(/.*/, restify.serveStatic({
+	'directory': '.',
+	'default': 'index.html'
+}));
+
 server.listen(process.env.port || 3978, function () {
     console.log('%s listening to %s', server.name, server.url);
 });
+
+
+
+
+
 
 // Very simple alarm scheduler
 var alarms = {};
