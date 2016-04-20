@@ -11,5 +11,8 @@
   "dependencies": {
     "botbuilder": "^0.9.1",
     "restify": "^4.0.4"
+  },
+  "engines": {
+    "node": "5.4.0"
   }
 }
